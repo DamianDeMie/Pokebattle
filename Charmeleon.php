@@ -1,5 +1,5 @@
 <?php
-class Charmeleon extends Pokemon
+class Charmeleon extends \Pokemon\Pokemon
 {
     //
     public function __construct($name)
@@ -14,5 +14,9 @@ class Charmeleon extends Pokemon
         $resistance = new Resistance('Lightning', 10);
 
         parent::__construct($name, $energyType, $hitpoints, $attacks, $weakness, $resistance);
+    }
+    public function getPokemonName()
+    {
+        return $this->name;
     }
 }
