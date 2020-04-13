@@ -15,7 +15,6 @@ class Attack
     {
         $this->damage = $this->damage * $multiplier;
     }
-    // Als de resistance enerytpe gelijk is aan de energytype van de aanvalende pokemon word de damage - de resistance gedaan.
     public function reduceDamage($resistance)
     {
         $this->damage = $this->damage - $resistance;
