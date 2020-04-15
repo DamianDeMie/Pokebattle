@@ -36,7 +36,7 @@ abstract class Pokemon
     public function battleTurn($target, $attack)
     {
         //Gets all the required data from the pokemons before starting the battle
-        $energyType = $this->energyType->getName();
+        $energyType = $this->getEnergyType()->getName();
         $weaknessEnergyType = $target->getWeakness()->getEnergyType();
         $multiplierEnergyType = $target->getWeakness()->getEnergyTypeValue();
 
@@ -68,12 +68,12 @@ abstract class Pokemon
         //Subtracts the damage value from the targets health.
         $target->health -= $damage;
         //if the target health reaches 0, displays a message that the target has fainted and removes them from the amount of Pokemon pool.
-        if ($target->health <= 0) {
-            echo $target->getPokemonName()  .  " fainted!";
+        if ($target->getHealth() <= 0) {
+            echo $target->getPokemonName()  .  " fainted!<br>";
             self::$amountOfPokemon--;
         } //Shows how much health is still left from the target if the target health isn't 0.
         else {
-            echo $target->getPokemonName() . " heeft nog " . $target->health . " hp over!<br>";
+            echo $target->getPokemonName() . " heeft nog " . $target->getHealth() . " hp over!<br>";
         }
     }
 
