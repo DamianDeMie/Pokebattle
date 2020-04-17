@@ -10,12 +10,11 @@ abstract class Pokemon
 {
     //Declares all the variables required for the Pokemon class.
     static $amountOfPokemon;
-    public $name;
-    public $energyType;
-    public $hitpoints;
-    public $attacks;
-    public $weakness;
-    public $resistance;
+    protected $name;
+    private $energyType;
+    private $hitpoints;
+    private $weakness;
+    private $resistance;
 
     //Constructor that will be linked to the seperate "Pokemon" classes to create those easily with preset values.
     public function __construct($name, $energyType, $hitpoints, $attacks, $weakness, $resistance)
