@@ -91,22 +91,22 @@ class Pokemon
     {
         return $this->hitpoints;
     }
-
+    /* Gets the Pokemons attack */
     public function getAttack()
     {
         return $this->attack;
     }
-
+    /* Gets the Pokemons Weakness */
     public function getWeakness()
     {
         return $this->weakness;
     }
-
+    /* Gets the Pokemons Resistance */
     public function getResistance()
     {
         return $this->resistance;
     }
-
+    /* Gets the Pokemons Health */
     public function getHealth()
     {
         return $this->health;
