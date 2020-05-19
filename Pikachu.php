@@ -15,9 +15,4 @@ class Pikachu extends \Pokemon\Pokemon
         //Because the Pikachu class extends to the Pokemon class, it sends all the data to the parent class which will execute the rest of the code.
         parent::__construct($name, $energyType, $hitpoints, $attacks, $weakness, $resistance);
     }
-
-    public function getPokemonName()
-    {
-        return $this->name;
-    }
 }

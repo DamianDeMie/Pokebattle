@@ -6,18 +6,18 @@ spl_autoload_register(function ($class_name) {
     include $class_name . '.php';
 });
 
-abstract class Pokemon
+class Pokemon
 {
-    //Declares all the variables required for the Pokemon class.
+    /* Declares all the variables required for the Pokemon class. */
     static $amountOfPokemon;
     public $name;
-    public $energyType;
-    public $hitpoints;
+    private $energyType;
+    private $hitpoints;
     public $attacks;
-    public $weakness;
-    public $resistance;
+    private $weakness;
+    private $resistance;
 
-    //Constructor that will be linked to the seperate "Pokemon" classes to create those easily with preset values.
+    /* Constructor that will be linked to the seperate "Pokemon" classes to create those easily with preset values. */
     public function __construct($name, $energyType, $hitpoints, $attacks, $weakness, $resistance)
     {
         $this->name = $name;
@@ -32,7 +32,7 @@ abstract class Pokemon
     }
 
 
-    //Simulates the battle between two Pokemon.
+    /*Simulates the battle between two Pokemon. */
     public function battleTurn($target, $attack)
     {
         //Gets all the required data from the pokemons before starting the battle
@@ -40,59 +40,54 @@ abstract class Pokemon
         $weaknessEnergyType = $target->getWeakness()->getEnergyType();
         $multiplierEnergyType = $target->getWeakness()->getEnergyTypeValue();
 
+
         $resistanceEnergyType = $target->getResistance()->getEnergyType();
         $resistance = $target->getResistance()->getEnergyTypeValue();
 
-
-        //Shows how much Hitpoints (HP) is left.
-        echo "<br><strong>" . $target->getPokemonName() .  " HP: " . $target->getHealth() . "/" .  $target->getHitpoints() . " <br><br>";
         //Checks if the weakness of the target is the same as the attacking Pokemons Energy Type, if so multiplies damage by set amount.
         if ($weaknessEnergyType == $energyType) {
-            $damage = $attack->getAttackDamage() * $multiplierEnergyType;
-            echo $this->name . " valt aan met " .  $attack->getAttackName() . "! It's super effective! (" . $damage . " damage)<br>";
+            $attack->multiplyDamage($multiplierEnergyType);
         } //Checks if the resistance of the target is the same as the attacking Pokemons Energy Type, if so decreases damage by set amount.
         elseif ($resistanceEnergyType == $energyType) {
-            $damage = $attack->getAttackDamage() - $resistance;
-            echo $this->name . " valt aan met " .  $attack->getAttackName() . "! It's not very effective (" . $damage . " damage)<br>";
+            $attack->reduceDamage($resistance);
         } //If neither of the previous conditions are met, attacks with normal damage value.
         else {
             $damage = $attack->getAttackDamage();
-            echo $this->name . " valt aan met " .  $attack->getAttackName() . " (" . $damage . " damage)<br>";
         }
+        $damage = $attack->getAttackDamage();
         //After every move, the damage is subtracted from the targets health.
-        $this->damageDone($damage, $target);
+        $target->damageDone($damage);
     }
 
-    public function damageDone($damage, $target)
+    public function damageDone($damage)
     {
         //Subtracts the damage value from the targets health.
-        $target->health -= $damage;
+        $this->health -= $damage;
+        return $damage;
         //if the target health reaches 0, displays a message that the target has fainted and removes them from the amount of Pokemon pool.
-        if ($target->health <= 0) {
-            echo $target->getPokemonName()  .  " fainted!";
+        if ($this->health <= 0) {
             self::$amountOfPokemon--;
-        } //Shows how much health is still left from the target if the target health isn't 0.
-        else {
-            echo $target->getPokemonName() . " heeft nog " . $target->health . " hp over!<br>";
         }
     }
 
-    //Shows how many Pokemon exist at the time of execution.
+    /*Shows how many Pokemon exist at the time of execution. */
     static function getPopulation()
     {
         return self::$amountOfPokemon;
     }
+    /*Gets the Pokemons name */
 
     public function getPokemonName()
     {
         return $this->name;
     }
 
+    /*Gets the Pokemons energy type */
     public function getEnergyType()
     {
         return $this->energyType;
     }
-
+    /*Gets the Pokemons hitpoints */
     public function getHitpoints()
     {
         return $this->hitpoints;
