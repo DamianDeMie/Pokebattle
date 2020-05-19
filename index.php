@@ -19,7 +19,7 @@ echo "<br><strong>" . $pikachu->getPokemonName() . " valt aan met " . $pikachu->
 echo "<br><strong>" . $charmeleon->getPokemonName() .  " heeft nog " . $charmeleon->getHealth() . "hp over! <br><br>";
 
 $charmeleon->battleTurn($pikachu, $charmeleon->attacks['Flare']);
-echo "<br><strong>" . $pikachu->getPokemonName() .  " HP: " . $pikachu->getHitPoints() . "/" .  $pikachu->getHitpoints() . " <br>";
+echo "<br><strong>" . $pikachu->getPokemonName() .  " HP: " . $pikachu->getHitPoints() . "/" .  $pikachu->getHitpoints() . " <br><br>";
 echo "<br><strong>" . $charmeleon->getPokemonName() . " valt aan met " . $charmeleon->attacks['Flare']->name . '!<br>';
 echo "<br><strong>" . $pikachu->getPokemonName() .   " heeft nog " . $pikachu->getHealth() . "hp over! <br><br>";
 

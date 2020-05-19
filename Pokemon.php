@@ -10,10 +10,9 @@ class Pokemon
 {
     /* Declares all the variables required for the Pokemon class. */
     static $amountOfPokemon;
-    public $name;
+    protected $name;
     private $energyType;
     private $hitpoints;
-    public $attacks;
     private $weakness;
     private $resistance;
 
@@ -36,7 +35,7 @@ class Pokemon
     public function battleTurn($target, $attack)
     {
         //Gets all the required data from the pokemons before starting the battle
-        $energyType = $this->energyType->getName();
+        $energyType = $this->getEnergyType()->getName();
         $weaknessEnergyType = $target->getWeakness()->getEnergyType();
         $multiplierEnergyType = $target->getWeakness()->getEnergyTypeValue();
 
