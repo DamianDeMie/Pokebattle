@@ -1,7 +1,11 @@
 <?php
 class Pikachu extends \Pokemon\Pokemon
 {
-    //Creates a constructor for the Pikachu class with preset values
+    /**
+     * Creates a constructor for the Pikachu class with preset values
+     *
+     * @param string $name
+     */
     public function __construct($name)
     {
         $energyType = new EnergyType('Lightning');

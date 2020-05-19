@@ -1,7 +1,11 @@
 <?php
 class Charmeleon extends \Pokemon\Pokemon
 {
-    //
+    /**
+     * Creates a constructor for the Charmeleon class with preset values
+     *
+     * @param string $name
+     */
     public function __construct($name)
     {
         $energyType = new EnergyType('Fire');
