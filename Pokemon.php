@@ -30,7 +30,7 @@ class Pokemon
      * Constructor that will be linked to the seperate "Pokemon" classes to create those easily with preset values.
      *
      * @param string $name
-     * @param mixed $energyType
+     * @param string $energyType
      * @param int $hitpoints
      * @param mixed $attacks
      * @param mixed $weakness
